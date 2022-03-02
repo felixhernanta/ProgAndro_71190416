@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">pertemuan4_71190416</string>
+    <string name="front">E-BURJO</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
 </resources>
