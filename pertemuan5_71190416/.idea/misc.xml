@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Github/ProgAndro_71190416/pertemuan5_71190416/app/src/main/res/drawable/color.xml" value="0.2265" />
-        <entry key="..\:/Github/ProgAndro_71190416/pertemuan5_71190416/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Github/ProgAndro_71190416/pertemuan5_71190416/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Github/ProgAndro_71190416/pertemuan5_71190416/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Github/ProgAndro_71190416/pertemuan5_71190416/app/src/main/res/layout/halamanhome.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
