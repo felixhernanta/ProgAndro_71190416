@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val ambilusername=intent.getStringExtra("username")
         val cetakusername = findViewById<TextView>(R.id.getuser)
-        cetakusername.text="${ambilusername}"
+        cetakusername.text="selamat datang ${ambilusername}"
         val keluar=findViewById<Button>(R.id.buttonlogout)
         keluar.setOnClickListener{
             val i=Intent(this, LoginActivity::class.java)

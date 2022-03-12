@@ -17,6 +17,7 @@ android:tileMode="disabled" android:gravity="top">
     android:text=""
     android:textColor="#000000"
     android:textSize="30sp"
+    android:gravity="center"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintHorizontal_bias="0.498"
     app:layout_constraintLeft_toLeftOf="parent"
