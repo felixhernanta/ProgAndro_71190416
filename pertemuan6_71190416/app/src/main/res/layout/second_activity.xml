@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Halaman1">
+    tools:context=".Halaman2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/text1"
+            android:text="@string/text2"
             android:textAlignment="center"
             android:gravity="center"
             android:textSize="25dp"
@@ -32,7 +32,7 @@
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/button1" />
+            android:text="@string/button2" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,19 +44,19 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frag_a"
-            android:name="id.ac.ukdw.pertemuan6_71190416.FragmentA"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-             />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/frag_b"
             android:name="id.ac.ukdw.pertemuan6_71190416.FragmentB"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-             />
+            />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/frag_b"
+            android:name="id.ac.ukdw.pertemuan6_71190416.FragmentC"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
 
 
     </LinearLayout>

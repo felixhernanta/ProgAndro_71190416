@@ -3,4 +3,10 @@
     <string name="frag_a">Frag A</string>
     <string name="frag_b">Frag B</string>
     <string name="frag_c">Frag C</string>
+    <string name="text1">Halaman 1</string>
+    <string name="text2">Halaman 2</string>
+    <string name="text3">Halaman 3</string>
+    <string name="button1">Ke Halaman 2</string>
+    <string name="button2">Ke Halaman 3</string>
+    <string name="button3">Ke Halaman 1</string>
 </resources>

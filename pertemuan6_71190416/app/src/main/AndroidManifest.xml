@@ -10,14 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pertemuan6_71190416">
         <activity
-            android:name=".MainActivity"
+            android:name=".Halaman1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Halaman2"
+            android:exported="true"/>
+        <activity
+            android:name=".Halaman3"
+            android:exported="true"/>
     </application>
 
 </manifest>
