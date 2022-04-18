@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProgAndro_71190416/pertemuan7_71190416/app/src/main/res/drawable/ereshkigal_background.xml" value="0.124" />
+        <entry key="..\:/ProgAndro_71190416/pertemuan7_71190416/app/src/main/res/drawable/katoudanzo_background.xml" value="0.132" />
+        <entry key="..\:/ProgAndro_71190416/pertemuan7_71190416/app/src/main/res/drawable/neroclaudius_background.xml" value="0.132" />
+        <entry key="..\:/ProgAndro_71190416/pertemuan7_71190416/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
         <entry key="..\:/ProgAndro_71190416/pertemuan7_71190416/app/src/main/res/layout/item_kontak.xml" value="0.25416666666666665" />
       </map>
     </option>
