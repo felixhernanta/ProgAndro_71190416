@@ -14,18 +14,22 @@ import androidx.viewpager2.widget.ViewPager2
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var pager1: ViewPager2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(findViewById<Toolbar>(R.id.toolbar))
+        setSupportActionBar(findViewById(R.id.toolbar))
         getSupportActionBar()!!.setDisplayShowTitleEnabled(false);
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
-        val pager= findViewById<ViewPager2>(R.id.pager)
-        val listFragment= listOf<Fragment>(FirstFragment(), SecondFragment(), ThirdFragment())
+
+        pager1=findViewById(R.id.pager)
+
+        val listFragment: ArrayList<Fragment> = arrayListOf(FirstFragment(), SecondFragment(), ThirdFragment())
         val pagerAdapter= PagerAdapter(this, listFragment)
-        pager.adapter=pagerAdapter
+        pager1.adapter=pagerAdapter
 
     }
 
@@ -42,9 +46,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
-            R.id.menu_profile -> Toast.makeText(this, "Ini menu profile",Toast.LENGTH_SHORT).show()
-            R.id.menu_settings -> Toast.makeText(this, "Ini menu setting",Toast.LENGTH_SHORT).show()
+            R.id.menu_home -> pager1.currentItem = 0
+            R.id.menu_profile -> pager1.currentItem = 1
+            R.id.menu_settings -> pager1.currentItem = 2
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 }
