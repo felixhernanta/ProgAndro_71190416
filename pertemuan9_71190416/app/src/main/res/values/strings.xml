@@ -1,3 +1,19 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">pertemuan9_71190416</string>
+    <string-array name ="pilihan_bahasa" tools:ignore="ExtraTranslation">
+        <item>Indonesia</item>
+        <item>English</item>
+        <item>日本語</item>
+    </string-array>
+    <string-array name ="ukuranfont" tools:ignore="ExtraTranslation">
+        <item>small</item>
+        <item>normal</item>
+        <item>huge</item>
+    </string-array>
+    <string name="front">E-BURJO</string>
+    <string name="username">username (bebas)</string>
+    <string name="password">password (1234)</string>
+    <string name="login">LOGIN</string>
+    <string name="logout">LOGOUT</string>
+    <string name="register">REGISTER</string>
 </resources>
