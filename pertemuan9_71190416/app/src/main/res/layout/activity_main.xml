@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@drawable/color"
+    android:configChanges="locale|orientation"
     android:tileMode="disabled" android:gravity="top">
 
 
@@ -44,7 +45,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/cabin"
             android:textSize="14dp"
-            android:text="Language:"
+            android:text="@string/language"
             android:textColor="#ffffff"/>
 
         <Spinner
@@ -75,7 +76,7 @@
             android:fontFamily="@font/cabin"
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:text="Ukuran Font:"/>
+            android:text="@string/font_size"/>
 
         <Spinner
             android:id="@+id/spinner2"

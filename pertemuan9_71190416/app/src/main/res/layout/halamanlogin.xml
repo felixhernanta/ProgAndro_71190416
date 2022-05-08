@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".HalamanLogin"
     android:background="@drawable/color"
+    android:configChanges="locale|orientation"
     android:tileMode="disabled" android:gravity="top">
 
     <TextView
@@ -60,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintVertical_bias="0.031" />
+        app:layout_constraintVertical_bias="0.024" />
 
     <Button
         android:id="@+id/button2"
@@ -69,14 +70,14 @@
         android:layout_weight="1"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:fontFamily="@font/cabin"
-        android:text="@string/logout"
+        android:text="@string/login"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.119" />
+        app:layout_constraintVertical_bias="0.187" />
 
     <Button
         android:id="@+id/button3"
@@ -92,6 +93,20 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintVertical_bias="0.187" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

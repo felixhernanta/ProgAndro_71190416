@@ -1,18 +1,22 @@
 package id.ac.ukdw.pertemuan9_71190416
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 
 class MainActivity : AppCompatActivity(){
     var sp: SharedPreferences? = null
     var editor: SharedPreferences.Editor? = null
-
+    var currentLanguage = "en"
+    var currentLanguageNew: String? = null
+    lateinit var locale: Locale
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +25,8 @@ class MainActivity : AppCompatActivity(){
         sp = getSharedPreferences("database1", MODE_PRIVATE)
         editor = sp?.edit()
         val lastClick=sp?.getInt("LastClick",0)
-
-
+        val lastClick1=sp?.getInt("LastClick1",0)
+        currentLanguage=intent.getStringExtra(currentLanguageNew).toString()
 
         val bahasa = resources.getStringArray(R.array.pilihan_bahasa)
         val spinner = findViewById<Spinner>(R.id.spinner)
@@ -37,7 +41,12 @@ class MainActivity : AppCompatActivity(){
             spinner.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    Toast.makeText(this@MainActivity, bahasa[position], Toast.LENGTH_SHORT).show()
+                    when(position){
+                        0-> setLocale("en")
+                        1-> setLocale("in")
+                        2-> setLocale("ja")
+                    }
+
                     sp?.edit()?.putInt("LastClick", position)?.commit()
                 }
 
@@ -46,6 +55,7 @@ class MainActivity : AppCompatActivity(){
                 }
             }
         }
+
         val ukuranfont = resources.getStringArray(R.array.ukuranfont)
         val spinner1 = findViewById<Spinner>(R.id.spinner2)
         if (spinner1 != null) {
@@ -54,24 +64,42 @@ class MainActivity : AppCompatActivity(){
                 android.R.layout.simple_spinner_item, ukuranfont
             )
             spinner1.adapter = adapter1
+            spinner1.setSelection(lastClick1!!)
 
             spinner1.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
-                ) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        ukuranfont[position], Toast.LENGTH_SHORT
-                    ).show()
-                    sp?.edit()?.putString("ukuran", ukuranfont[position])?.commit()
+                override fun onItemSelected(parent: AdapterView<*>,view: View, position: Int, id: Long) {
+                    sp?.edit()?.putInt("LastClick1", position)?.commit()
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
                 }
             }
+        }
+        val logout = findViewById<Button>(R.id.button3)
+        logout.setOnClickListener {
+            val i=Intent(this, HalamanLogin::class.java)
+            startActivity(i)
+            finish()
+        }
+    }
+    fun setLocale(localeName : String){
+        if (localeName!=currentLanguage){
+//            Toast.makeText(this, localeName + currentLanguage, Toast.LENGTH_SHORT).show()
+            locale = Locale(localeName)
+            var res = resources
+            var dm = res.displayMetrics
+            var conf = res.configuration
+            conf.locale = locale
+            res.updateConfiguration(conf, dm)
+            var refresh = Intent(this, MainActivity::class.java)
+            refresh.putExtra(currentLanguageNew, localeName)
+            startActivity(refresh)
+            finish()
+        }
+        else{
+
         }
     }
 }

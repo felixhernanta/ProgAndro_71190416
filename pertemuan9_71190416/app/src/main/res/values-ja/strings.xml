@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">pertemuan9_71190416</string>
+    <string-array name ="pilihan_bahasa" tools:ignore="ExtraTranslation">
+        <item>English</item>
+        <item>Indonesia</item>
+        <item>日本語</item>
+    </string-array>
+    <string-array name ="ukuranfont" tools:ignore="ExtraTranslation">
+        <item>小</item>
+        <item>ノーマル</item>
+        <item>大</item>
+    </string-array>
+    <string name="front">イーブルジョ</string>
+    <string name="username">ユーザー名 (任意)</string>
+    <string name="password">パスワード(1234)</string>
+    <string name="login">ログイン</string>
+    <string name="logout">ログアウト</string>
+    <string name="register">登録</string>
+    <string name="language">言語</string>
+    <string name="font_size">フォントサイズ</string>
+</resources>
