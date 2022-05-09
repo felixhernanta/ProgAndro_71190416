@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/MSI/AndroidStudioProjects/pertemuan9_71190416/app/src/main/res/drawable/color.xml" value="0.2595" />
-        <entry key="..\:/Users/MSI/AndroidStudioProjects/pertemuan9_71190416/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/ProgAndro_71190416/pertemuan9_71190416/app/src/main/res/drawable/color.xml" value="0.1" />
+        <entry key="..\:/ProgAndro_71190416/pertemuan9_71190416/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/ProgAndro_71190416/pertemuan9_71190416/app/src/main/res/layout/halamanlogin.xml" value="0.1" />
+        <entry key="..\:/ProgAndro_71190416/pertemuan9_71190416/app/src/main/res/layout/spinnerbahasa.xml" value="0.25416666666666665" />
+        <entry key="..\:/ProgAndro_71190416/pertemuan9_71190416/app/src/main/res/layout/spinnerukuranfont.xml" value="0.16168478260869565" />
       </map>
     </option>
   </component>
