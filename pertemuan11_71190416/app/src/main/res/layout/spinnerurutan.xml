@@ -1,0 +1,10 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ukuranurutan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_weight="3"
+    android:fontFamily="@font/cabin"
+    android:padding="10dp"
+    android:textColor="#ffffff"
+    android:textSize="15dp" />

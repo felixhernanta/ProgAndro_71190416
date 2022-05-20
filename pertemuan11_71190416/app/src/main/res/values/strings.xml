@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">pertemuan11_71190416</string>
+    <string-array name="pilihanurutan">
+        <item>NIM</item>
+        <item>Nama</item>
+        <item>IPK</item>
+    </string-array>
 </resources>
