@@ -156,21 +156,40 @@ class MainActivity : AppCompatActivity() {
         firestore?.collection("namaMahasiswa")
             ?.get()
             ?.addOnSuccessListener { result ->
-                arrayTampung.clear()
                 val txvHasil = findViewById<TextView>(R.id.txvHasil)
                 val tampungpilihan = arrayListOf<String>()
                 val tampungpilihan1 = arrayListOf<String>()
                 var hasil = ""
+                var hitung = 0
                 for (doc in result) {
-                    arrayTampung.add("${doc!!.get("nim")} - ${doc!!.get("nama")} - ${doc!!.get("ipk")}\n")
-                    if (sortBy == "nim") {
-                        tampungpilihan.add("${doc!!.get("nim")}")
-                    } else if (sortBy == "nama") {
-                        tampungpilihan.add("${doc!!.get("nama")}")
-                    } else if (sortBy == "ipk") {
-                        tampungpilihan.add("${doc!!.get("ipk")}")
+                    hitung+=1
+                }
+                Toast.makeText(this, arrayTampung.size.toString(), Toast.LENGTH_SHORT).show()
+                if (arrayTampung.size==0 || arrayTampung.size==hitung){
+                    arrayTampung.clear()
+                    for (doc in result) {
+                        arrayTampung.add("${doc!!.get("nim")} - ${doc!!.get("nama")} - ${doc!!.get("ipk")}\n")
+                        if (sortBy == "nim") {
+                            tampungpilihan.add("${doc!!.get("nim")}")
+                        } else if (sortBy == "nama") {
+                            tampungpilihan.add("${doc!!.get("nama")}")
+                        } else if (sortBy == "ipk") {
+                            tampungpilihan.add("${doc!!.get("ipk")}")
+                        }
                     }
                 }
+                else{
+                    for (doc in result) {
+                        if (sortBy == "nim") {
+                            tampungpilihan.add("${doc!!.get("nim")}")
+                        } else if (sortBy == "nama") {
+                            tampungpilihan.add("${doc!!.get("nama")}")
+                        } else if (sortBy == "ipk") {
+                            tampungpilihan.add("${doc!!.get("ipk")}")
+                        }
+                    }
+                }
+
                 if (clickCount % 2 == 0) {
                     var tampungpilihan = tampungpilihan.sorted()
                     for (item in tampungpilihan) {
@@ -338,10 +357,13 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-                for (item in arrayCari) {
-                    hasil1 += item
-                }
-                txvHasil.setText(hasil1)
+//                for (item in arrayCari) {
+//                    hasil1 += item
+//                }
+                arrayTampung=arrayCari
+//                txvHasil.setText(hasil1)
+                refreshData()
+//                Toast.makeText(this, arrayTampung.toString(), Toast.LENGTH_SHORT).show()
             }
     }
 }
