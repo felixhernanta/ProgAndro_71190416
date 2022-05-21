@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity() {
                 for (doc in result) {
                     hitung+=1
                 }
-                Toast.makeText(this, arrayTampung.size.toString(), Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, arrayTampung.size.toString(), Toast.LENGTH_SHORT).show()
                 if (arrayTampung.size==0 || arrayTampung.size==hitung){
                     arrayTampung.clear()
                     for (doc in result) {
