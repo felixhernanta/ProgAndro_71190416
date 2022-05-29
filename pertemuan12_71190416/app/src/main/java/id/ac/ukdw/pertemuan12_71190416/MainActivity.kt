@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
             url,
             Response.Listener<String> { response ->
                 val data = JSONObject(response)
-//                val cuaca = data.getJSONArray("weather").getJSONObject(0).getString("description")
-//                val suhu = data.getJSONObject("main").getDouble("temp")
                 val cuacaHariIni = data.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("description")
                 val suhuHariIni = data.getJSONArray("list").getJSONObject(0).getJSONObject("main").getDouble("temp")
                 val txvHariIni = findViewById<TextView>(R.id.txvHasilHariIni)
