@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">71190416_final</string>
+    <string name="login">LOGIN FIRST :</string>
+    <string name="title">MUSIC PLAYER</string>
+    <string name="login1">Sign In With Google</string>
+    <string name="create">Add Song</string>
+    <string name="logout">Sign Out</string>
+    <string name="title1">Judul Lagu:</string>
+    <string name="singer">Penyanyi:</string>
+    <string name="albumtitle">Album</string>
+    <string name="cover">Cover lagu</string>
+    <string name="genre">Genre</string>
+    <string name="releasedate">Tanggal Rilis</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="decline">DECLINE</string>
+    <string name="back">GO BACK</string>
+<!--    <string name="default_web_client_id">266415720762-6pkbun15o1csim47i1ir34iuq81oljfg.apps.googleusercontent.com</string>-->
 </resources>
