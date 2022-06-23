@@ -5,10 +5,13 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import android.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,14 +20,23 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.ArrayList
 
 class LoginScreen : AppCompatActivity() {
     var firestore: FirebaseFirestore? = null
-    lateinit var fragmentManager: FragmentManager
+    lateinit var searchView: SearchView
+    lateinit var listSong: ArrayList<AlbumLagu>
+    lateinit var recyclerView: RecyclerView
+    lateinit var itemAdapter: SongAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
         setContentView(R.layout.loginscreen)
+
+//        binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
         val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
         val googleClient = GoogleSignIn.getClient(this, signInOptions)
@@ -51,21 +63,58 @@ class LoginScreen : AppCompatActivity() {
                 firestore?.collection(personName)
                     ?.get()
                     ?.addOnSuccessListener {documents ->
-                        val listSong = arrayListOf<AlbumLagu>()
+                        listSong = arrayListOf<AlbumLagu>()
+                        listSong.clear()
                         for (document in documents){
-                            listSong.add(AlbumLagu(
-                                document["judul"].toString(),
-                                document["penyanyi"].toString(),
-                                document["album"].toString(),
-                                document["genre"].toString(),
-                                document["tanggal"].toString(),
-                                document["akun"].toString()
-                            ))
+                                listSong.add(AlbumLagu(
+                                    document["judul"].toString(),
+                                    document["penyanyi"].toString(),
+                                    document["album"].toString(),
+                                    document["genre"].toString(),
+                                    document["tanggal"].toString(),
+                                    document["akun"].toString()
+                                ))
                         }
-                        val showingSong = findViewById<RecyclerView>(R.id.showingSong)
-                        showingSong.layoutManager=LinearLayoutManager(this)
-                        val adapter = SongAdapter(listSong, this)
+
+
+                        var showingSong = findViewById<RecyclerView>(R.id.showingSong)
+                        showingSong.layoutManager=LinearLayoutManager(this@LoginScreen)
+                        val adapter = SongAdapter(listSong, this@LoginScreen)
                         showingSong.adapter=adapter
+                        searchView = findViewById(R.id.searcher)
+                        searchView.clearFocus()
+                        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                            override fun onQueryTextSubmit(query: String?): Boolean {
+                                return false
+                            }
+
+                            override fun onQueryTextChange(text: String): Boolean {
+                                listSong.clear()
+                                for (document in documents){
+                                    if (document["judul"].toString().toLowerCase().contains(text.toLowerCase())){
+                                        listSong.add(AlbumLagu(
+                                            document["judul"].toString(),
+                                            document["penyanyi"].toString(),
+                                            document["album"].toString(),
+                                            document["genre"].toString(),
+                                            document["tanggal"].toString(),
+                                            document["akun"].toString()
+                                        ))
+                                    }
+                                }
+
+
+                                var showingSong = findViewById<RecyclerView>(R.id.showingSong)
+                                showingSong.layoutManager=LinearLayoutManager(this@LoginScreen)
+                                val adapter = SongAdapter(listSong, this@LoginScreen)
+                                showingSong.adapter=adapter
+                                return true
+                            }
+                        })
+
+
+
+
                     }
             }
 

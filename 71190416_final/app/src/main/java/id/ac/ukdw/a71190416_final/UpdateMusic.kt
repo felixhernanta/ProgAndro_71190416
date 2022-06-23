@@ -34,16 +34,14 @@ class UpdateMusic : AppCompatActivity() {
         val ambilalbum=intent.getStringExtra("album")
         val ambilgenre=intent.getStringExtra("genre")
 
-        val judul = findViewById<EditText>(R.id.editTextJudulLagu)
+        val judul = findViewById<TextView>(R.id.editTextJudulLagu)
         val penyanyi = findViewById<EditText>(R.id.editTextPenyanyi)
         val album = findViewById<EditText>(R.id.editTextAlbum)
         val genre = findViewById<EditText>(R.id.editTextGenre)
         val kalendar= findViewById<DatePicker>(R.id.TanggalRelease)
 
         val bundle: Bundle = intent.extras!!
-//        val ambilgambar=bundle.getInt("foto")
-//        cetakgambar.setImageResource(ambilgambar)
-        judul.setText(ambiljudul)
+        judul.text = ambiljudul
         penyanyi.setText(ambilpenyanyi)
         album.setText(ambilalbum)
         genre.setText(ambilgenre)

@@ -6,9 +6,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -16,11 +14,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.ArrayList
 
-class SongAdapter (var listSong: ArrayList<AlbumLagu>, var context: Context): RecyclerView.Adapter<SongAdapter.SongHolder>() {
+class SongAdapter (var listSong: ArrayList<AlbumLagu>, var context: Context): RecyclerView.Adapter<SongAdapter.SongHolder>(), Filterable {
     var firestore: FirebaseFirestore? = null
 
+    val mainList = listSong
+    val searchList = ArrayList<AlbumLagu>(listSong)
+
     class SongHolder(val view : View): RecyclerView.ViewHolder(view){
+
         @SuppressLint("RestrictedApi")
         fun bind(lagu: AlbumLagu, context: Context){
             val firestore = FirebaseFirestore.getInstance()
@@ -72,6 +76,35 @@ class SongAdapter (var listSong: ArrayList<AlbumLagu>, var context: Context): Re
     }
 
     override fun getItemCount(): Int {
-        return listSong.size
+        return mainList.size
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter(){
+            override fun performFiltering(constraint: CharSequence): FilterResults {
+                val filteredList = ArrayList<AlbumLagu>()
+                if (constraint.isBlank() or constraint.isEmpty()){
+                    filteredList.addAll(searchList)
+                }
+                else{
+                    val filterPattern = constraint.toString().toLowerCase().trim()
+                    searchList.forEach{
+                        if (it.judul.toLowerCase(Locale.ROOT).contains(filterPattern)){
+                            filteredList.add(it)
+                        }
+                    }
+                }
+                val result = FilterResults()
+                result.values = filteredList
+
+                return result
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                mainList.clear()
+                mainList.addAll(results!!.values as List<AlbumLagu>)
+                notifyDataSetChanged()
+            }
+        }
     }
 }
