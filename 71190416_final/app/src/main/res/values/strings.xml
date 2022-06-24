@@ -14,5 +14,6 @@
     <string name="confirm">CONFIRM</string>
     <string name="decline">DECLINE</string>
     <string name="back">GO BACK</string>
+    <string name="selectimage">SELECT IMAGE</string>
 <!--    <string name="default_web_client_id">266415720762-6pkbun15o1csim47i1ir34iuq81oljfg.apps.googleusercontent.com</string>-->
 </resources>

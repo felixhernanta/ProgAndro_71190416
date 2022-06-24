@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.collections.ArrayList
 
-class SongAdapter (var listSong: ArrayList<AlbumLagu>, var context: Context): RecyclerView.Adapter<SongAdapter.SongHolder>(), Filterable {
+class SongAdapter (var listSong: ArrayList<AlbumLagu>, var context: Context): RecyclerView.Adapter<SongAdapter.SongHolder>() {
     var firestore: FirebaseFirestore? = null
 
     val mainList = listSong
@@ -28,13 +28,10 @@ class SongAdapter (var listSong: ArrayList<AlbumLagu>, var context: Context): Re
         @SuppressLint("RestrictedApi")
         fun bind(lagu: AlbumLagu, context: Context){
             val firestore = FirebaseFirestore.getInstance()
-//            view.findViewById<ImageView>(R.id.foto).setImageResource(contact.foto)
-
             view.findViewById<TextView>(R.id.judulLagu).setText(lagu.judul)
             view.findViewById<TextView>(R.id.namaPenyanyi).setText(lagu.penyanyi)
             view.setOnClickListener{
                 val i: Intent = Intent(view.context, SongDetail::class.java)
-//                i.putExtra("foto",lagu.foto)
                 i.putExtra("judul",lagu.judul)
                 i.putExtra("penyanyi",lagu.penyanyi)
                 i.putExtra("album",lagu.album)
@@ -77,34 +74,5 @@ class SongAdapter (var listSong: ArrayList<AlbumLagu>, var context: Context): Re
 
     override fun getItemCount(): Int {
         return mainList.size
-    }
-
-    override fun getFilter(): Filter {
-        return object : Filter(){
-            override fun performFiltering(constraint: CharSequence): FilterResults {
-                val filteredList = ArrayList<AlbumLagu>()
-                if (constraint.isBlank() or constraint.isEmpty()){
-                    filteredList.addAll(searchList)
-                }
-                else{
-                    val filterPattern = constraint.toString().toLowerCase().trim()
-                    searchList.forEach{
-                        if (it.judul.toLowerCase(Locale.ROOT).contains(filterPattern)){
-                            filteredList.add(it)
-                        }
-                    }
-                }
-                val result = FilterResults()
-                result.values = filteredList
-
-                return result
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                mainList.clear()
-                mainList.addAll(results!!.values as List<AlbumLagu>)
-                notifyDataSetChanged()
-            }
-        }
     }
 }

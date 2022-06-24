@@ -17,6 +17,7 @@ class SongDetail : AppCompatActivity(){
         val album = findViewById<TextView>(R.id.album)
         val genre = findViewById<TextView>(R.id.genre)
         val tanggal = findViewById<TextView>(R.id.tanggal)
+        val gambar = findViewById<ImageView>(R.id.foto)
 
         val ambiljudul =intent.getStringExtra("judul")
         val ambilpenyanyi=intent.getStringExtra("penyanyi")
@@ -24,9 +25,7 @@ class SongDetail : AppCompatActivity(){
         val ambilgenre=intent.getStringExtra("genre")
         val ambiltanggal=intent.getStringExtra("tanggal")
 
-        val bundle: Bundle = intent.extras!!
-//        val ambilgambar=bundle.getInt("foto")
-//        cetakgambar.setImageResource(ambilgambar)
+        gambar.setImageResource(R.drawable.musiclogo)
         judul.text=ambiljudul
         penyanyi.text=ambilpenyanyi
         album.text=ambilalbum

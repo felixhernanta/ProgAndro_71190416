@@ -1,6 +1,8 @@
 package id.ac.ukdw.a71190416_final
 
+import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -9,15 +11,22 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import id.ac.ukdw.a71190416_final.databinding.CreatemusicBinding
+import java.net.URI
+import java.text.SimpleDateFormat
 import java.util.*
 
 class CreateMusic : AppCompatActivity() {
     val cal = Calendar.getInstance()
     var firestore: FirebaseFirestore? = null
+    lateinit var ImageUri : Uri
+    lateinit var binding : CreatemusicBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.createmusic)
+        binding = CreatemusicBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
         val googleClient = GoogleSignIn.getClient(this, signInOptions)
@@ -43,6 +52,7 @@ class CreateMusic : AppCompatActivity() {
 
             if (judul!=null && penyanyi!=null && album!=null && genre!=null && kalendar!=null){
                 if (acct!=null){
+
                     val personName = acct.email
                     val kalendar2 = kalendar.dayOfMonth.toString() +  " / " + kalendar.month + " / "+ kalendar.year
                     val albumLagu = AlbumLagu(judul.text.toString(), penyanyi.text.toString(), album.text.toString(), genre.text.toString(), kalendar2, personName.toString())

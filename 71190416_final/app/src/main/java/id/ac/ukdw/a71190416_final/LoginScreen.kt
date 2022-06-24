@@ -31,12 +31,7 @@ class LoginScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
         setContentView(R.layout.loginscreen)
-
-//        binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
         val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
         val googleClient = GoogleSignIn.getClient(this, signInOptions)
@@ -91,7 +86,13 @@ class LoginScreen : AppCompatActivity() {
                             override fun onQueryTextChange(text: String): Boolean {
                                 listSong.clear()
                                 for (document in documents){
-                                    if (document["judul"].toString().toLowerCase().contains(text.toLowerCase())){
+                                    if (document["judul"].toString().toLowerCase().contains(text.toLowerCase())||
+                                        document["penyanyi"].toString().toLowerCase().contains(text.toLowerCase())||
+                                        document["album"].toString().toLowerCase().contains(text.toLowerCase())||
+                                        document["genre"].toString().toLowerCase().contains(text.toLowerCase())||
+                                        document["tanggal"].toString().toLowerCase().contains(text.toLowerCase())||
+                                        document["akun"].toString().toLowerCase().contains(text.toLowerCase())
+                                            ){
                                         listSong.add(AlbumLagu(
                                             document["judul"].toString(),
                                             document["penyanyi"].toString(),
